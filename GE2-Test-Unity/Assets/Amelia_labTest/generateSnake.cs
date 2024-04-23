@@ -13,6 +13,9 @@ public class generateSnake : MonoBehaviour
 
     public GameObject[] sections;
 
+    //Gizmos
+    public Vector3 velocity = Vector3.zero;
+
     /*
     private MeshCollider mesh;
     private BoxCollider coll;
