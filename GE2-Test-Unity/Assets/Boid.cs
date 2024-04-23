@@ -31,10 +31,13 @@ public class Boid : MonoBehaviour
 
     public void OnDrawGizmos()
     {
+        /*
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position + velocity);
+        */
 
-        Gizmos.color = Color.yellow;
+        //cyan instead
+        Gizmos.color = Color.cyan;
         Gizmos.DrawLine(transform.position, transform.position + force * 10);
     }
 

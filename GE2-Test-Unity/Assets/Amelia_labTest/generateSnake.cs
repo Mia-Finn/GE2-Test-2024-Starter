@@ -64,13 +64,12 @@ public class generateSnake : MonoBehaviour
         */
 
         //draw gizmo
-        OnDrawGizmos();
-
-
+       // OnDrawGizmos();
     }
 
     private void OnDrawGizmos()
     {
-
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + velocity);
     }
 }

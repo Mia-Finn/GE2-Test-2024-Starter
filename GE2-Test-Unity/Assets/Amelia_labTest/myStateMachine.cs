@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class myStateMachine : MonoBehaviour
 {
@@ -13,8 +15,12 @@ public class myStateMachine : MonoBehaviour
 
     //other stuff
     public GameObject player;
-    public float speed = 1;
+    public float speed;
     public Rigidbody rb;
+
+    //text
+    public TMP_Text text;
+   // public Text text;
 
     //state machine
     public enum State { idle, flee, chase }
@@ -34,7 +40,7 @@ public class myStateMachine : MonoBehaviour
             case State.idle:
                 if (canIdle == true)
                 {
-                    // idle();
+                    idle();
                     Debug.Log("IDLE!!!!!");
                 }
                 else if (canChase == true)
@@ -79,6 +85,16 @@ public class myStateMachine : MonoBehaviour
         }
 
         boolControl();
+
+        //control speed
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            speed = speed + 1;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            speed = speed - 1;
+        }
     }
 
     void idle()
@@ -88,6 +104,9 @@ public class myStateMachine : MonoBehaviour
             // gameObject.transform.position = new Vector3(0, 0, 0);
             transform.position = this.transform.position;
             Debug.Log("IDLE!!!!!");
+
+            //state text
+            text.text = "State = Idle";
         }
     }
 
@@ -100,8 +119,11 @@ public class myStateMachine : MonoBehaviour
             transform.position = newPos;
             Debug.Log("Chasing!!!!!");
 
+            //state text
+            text.text = "State = Chase";
+
             //Face movement direction
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newPos.normalized), 0.2f);
+            //  transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newPos.normalized), 0.2f);
             //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newPos), 0.15F);
             /*
             Vector3 lookDirection = newPos + gameObject.transform.position;
@@ -122,8 +144,11 @@ public class myStateMachine : MonoBehaviour
             transform.position = newPos;
             Debug.Log("Fleeing!!!!");
 
+            //state text
+            text.text = "State = Flee";
+
             //turn moving direction
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newPos.normalized), 0.2f);
+            //  transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(newPos.normalized), 0.2f);
             /*
             Vector3 lookDirection = newPos + gameObject.transform.position;
             gameObject.transform.LookAt(lookDirection);
@@ -145,7 +170,7 @@ public class myStateMachine : MonoBehaviour
             canFlee = false;
             canChase = true;
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             canIdle = false;
             canFlee = true;
