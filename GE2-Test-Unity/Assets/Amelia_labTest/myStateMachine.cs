@@ -28,14 +28,65 @@ public class myStateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //state machine
+        switch (currentState)
+        {
+            case State.idle:
+                if (canIdle == true)
+                {
+                    // idle();
+                    Debug.Log("IDLE!!!!!");
+                }
+                else if (canChase == true)
+                {
+                    currentState = State.chase;
+                }
+                else if (canFlee == true)
+                {
+                    currentState = State.flee;
+                }
+                break;
 
+            case State.flee:
+                if (canFlee == true)
+                {
+                    flee();
+                }
+                else if (canChase == true)
+                {
+                    currentState = State.chase;
+                }
+                else if (canIdle == true)
+                {
+                    currentState = State.idle;
+                }
+                break;
+
+            case State.chase:
+                if (canChase == true)
+                {
+                    chase();
+                }
+                else if (canIdle == true)
+                {
+                    currentState = State.idle;
+                }
+                else if (canFlee == true)
+                {
+                    currentState = State.flee;
+                }
+                break;
+        }
+
+        boolControl();
     }
 
     void idle()
     {
         if (canIdle == true)
         {
-            gameObject.transform.position = new Vector3(0, 0, 0);
+            // gameObject.transform.position = new Vector3(0, 0, 0);
+            transform.position = this.transform.position;
             Debug.Log("IDLE!!!!!");
         }
     }
@@ -82,19 +133,19 @@ public class myStateMachine : MonoBehaviour
 
     void boolControl()
     {
-        if(Input.GetKeyDown(KeyCode.I))
+        if(Input.GetKeyDown(KeyCode.W))
         {
             canIdle = true;
             canFlee = false;
             canChase = false;
         }
-        else if(Input.GetKeyDown(KeyCode.C))
+        else if(Input.GetKeyDown(KeyCode.A))
         {
             canIdle = false;
             canFlee = false;
             canChase = true;
         }
-        else if (Input.GetKeyDown(KeyCode.F))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             canIdle = false;
             canFlee = true;

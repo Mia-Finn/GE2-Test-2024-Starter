@@ -28,6 +28,9 @@ public class generateSnake : MonoBehaviour
         mesh = GetComponent<MeshCollider>();
         coll = GetComponent<BoxCollider>();
         */
+
+        //Make pink
+        //gameObject.GetComponent<Material>(); = 
     }
 
     // Update is called once per frame
@@ -62,9 +65,12 @@ public class generateSnake : MonoBehaviour
 
         //draw gizmo
         OnDrawGizmos();
+
+
     }
 
     private void OnDrawGizmos()
     {
+
     }
 }
