@@ -29,6 +29,7 @@ public class myStateMachine : MonoBehaviour
     public void Start()
     {
         currentState = State.idle;
+        text.text = "State = Idle";
     }
 
     // Update is called once per frame
@@ -41,7 +42,6 @@ public class myStateMachine : MonoBehaviour
                 if (canIdle == true)
                 {
                     idle();
-                    Debug.Log("IDLE!!!!!");
                 }
                 else if (canChase == true)
                 {
@@ -84,6 +84,7 @@ public class myStateMachine : MonoBehaviour
                 break;
         }
 
+        //controls bool change
         boolControl();
 
         //control speed
@@ -106,7 +107,7 @@ public class myStateMachine : MonoBehaviour
         {
             // gameObject.transform.position = new Vector3(0, 0, 0);
             transform.position = this.transform.position;
-            Debug.Log("IDLE!!!!!");
+          //  Debug.Log("IDLE!!!!!");
 
             //state text
             text.text = "State = Idle";
@@ -120,7 +121,7 @@ public class myStateMachine : MonoBehaviour
             Vector3 dest = player.transform.position;
             Vector3 newPos = Vector3.MoveTowards(transform.position, dest, speed * Time.deltaTime);
             transform.position = newPos;
-            Debug.Log("Chasing!!!!!");
+           // Debug.Log("Chasing!!!!!");
 
             //state text
             text.text = "State = Chase";
@@ -145,7 +146,7 @@ public class myStateMachine : MonoBehaviour
             Vector3 dest = gameObject.transform.position - player.transform.position;
             Vector3 newPos = Vector3.MoveTowards(transform.position, dest, speed * Time.deltaTime);
             transform.position = newPos;
-            Debug.Log("Fleeing!!!!");
+          //  Debug.Log("Fleeing!!!!");
 
             //state text
             text.text = "State = Flee";

@@ -6,10 +6,10 @@ public class generateSnake : MonoBehaviour
 {
     //Add fields for length, frequency, start_angle, base_size, multiplier
     public float length;
-    public int freq;
-    public int start_angle;
-    public int base_size;
-    public int multiplier;
+    public float freq;
+    public float start_angle;
+    public float base_size;
+    public float multiplier;
 
     public GameObject[] sections;
 
