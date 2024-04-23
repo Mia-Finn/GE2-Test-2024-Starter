@@ -11,6 +11,13 @@ public class Boid : MonoBehaviour
     public Vector3 velocity = Vector3.zero;
     public float mass = 1;
 
+    //Add fields for length, frequency, start_angle, base_size, multiplier
+    public float length;
+    public int freq;
+    public int start_angle;
+    public int base_size;
+    public int multiplier;
+
     [Range(0.0f, 10.0f)]
     public float damping = 0.01f;
 
