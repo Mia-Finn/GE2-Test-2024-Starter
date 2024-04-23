@@ -19,7 +19,7 @@ public class myStateMachine : MonoBehaviour
     public Rigidbody rb;
 
     //text
-    public TMP_Text text;
+    public TMP_Text text, speedText;
    // public Text text;
 
     //state machine
@@ -95,6 +95,9 @@ public class myStateMachine : MonoBehaviour
         {
             speed = speed - 1;
         }
+
+        //show speed
+        speedText.text = "Speed = " + speed;
     }
 
     void idle()
