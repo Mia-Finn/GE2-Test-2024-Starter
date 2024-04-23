@@ -7,12 +7,13 @@ public class randomDest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(move());
     }
-
-    IEnumerator (move)
+    IEnumerator move()
     {
-
-        yield return new WaitForSeconds(5f);
+        var randVec = new Vector3(Random.value, Random.value, Random.value);
+        gameObject.transform.position = randVec;
+        Debug.Log("Move random");
+        yield return new WaitForSeconds(10f);
     }
 }
