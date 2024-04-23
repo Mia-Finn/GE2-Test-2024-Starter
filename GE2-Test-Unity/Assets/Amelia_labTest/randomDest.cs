@@ -14,6 +14,7 @@ public class randomDest : MonoBehaviour
         var randVec = new Vector3(Random.value, Random.value, Random.value);
         gameObject.transform.position = randVec;
         Debug.Log("Move random");
+
         yield return new WaitForSeconds(10f);
     }
 }

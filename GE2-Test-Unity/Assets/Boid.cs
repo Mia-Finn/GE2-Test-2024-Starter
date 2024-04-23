@@ -18,6 +18,9 @@ public class Boid : MonoBehaviour
     public int base_size;
     public int multiplier;
 
+    //move to diif dest
+    public GameObject targetCube;
+
     [Range(0.0f, 10.0f)]
     public float damping = 0.01f;
 
